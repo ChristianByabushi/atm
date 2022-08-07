@@ -1,0 +1,56 @@
+     $(".validationError").text("");
+          $.ajax({ 
+               type: "POST",
+               url: baseurl + "/dashboard/recordProduct",
+               data: $("#formNewProduct").serialize(),
+               dataType: "JSON",
+               success: function (response) {  
+                  for(let i in response){
+                 //    console.log(obj[i]); 
+               $(".validationError").append(`<p> ${response[i]} </p>` )
+
+                  }
+
+               var values = Object.values(response)
+              
+               },
+               error: function (jqXHR, textStatus, errorThrown) {
+                  alert('Erreur d\'enregistrement');
+               }
+});
+        /* dataSubmit =  {
+         id: $('[name="numero"]').val(),
+         title: $('[name="numero"]').val(),
+         categorie: $('[name="nameFile"]').val(),
+      } 
+     */ //console.log($("#formNewProduct").serialize())
+/*
+$("#dialog-confirm").dialog("open");
+*/
+
+action="<?= base_url("/dashboard/recordProduct")?>" 
+
+
+<form id="formNewProduct" method="post" enctype="multipart/form-data"  action="<?= base_url("/dashboard/recordProduct")?>">
+
+
+
+
+
+         /*    
+      form_data = new FormData($("formNewProduct")[0]);
+
+      form_data.append('numero', `${$('[name="numero"]').val()}` ,
+      'title', `${$('[name="title"]').val()}` ,
+      'qualite',`${$('[name="qualite"]').val()}` ,
+      'categorie', `${$('[name="categorie"]').val()}` ,
+      'description', `${$('[name="description"]').val()}` ,
+      'create_at', `${ $('[name="create_at"]').val()}`, 
+      'image', `${$('[name="image"]')[0].files[0]}`  
+      );  
+    
+      
+      form_data.append('chr',` ${$('[name="numero"]').val()}` )
+    */
+
+
